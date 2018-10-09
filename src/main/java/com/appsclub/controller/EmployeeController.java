@@ -25,7 +25,7 @@ public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
-	@RequestMapping(value = EmpRestURIConstants.DUMMY_EMP, method = RequestMethod.GET)
+	/*@RequestMapping(value = EmpRestURIConstants.DUMMY_EMP, method = RequestMethod.GET)
 	public @ResponseBody Employee getDummyEmployee() {
 		logger.info("Start getDummyEmployee");
 		Employee emp = new Employee();
@@ -77,6 +77,6 @@ public class EmployeeController {
 		Employee emp = empData.get(empId);
 		empData.remove(empId);
 		return emp;
-	}
+	}*/
 	
 }

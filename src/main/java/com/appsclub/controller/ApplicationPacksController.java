@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -24,7 +25,26 @@ public class ApplicationPacksController {
 	@Autowired
 	PackAppRepository packAppRepository;
 
-	@RequestMapping(value = EmpRestURIConstants.APPPACK_GET_OP_PACK, method = RequestMethod.GET)
+	@RequestMapping(value = EmpRestURIConstants.GET_PACK_APP_ID, method = RequestMethod.GET)
+	public @ResponseBody PackApp getPackApp(@PathVariable("id") Integer id) {
+		logger.info("Start getPackApp. ID="+id);
+
+		Optional<PackApp> PackApp = packAppRepository.findById(id);
+
+		if (!PackApp.isPresent())
+			throw new RuntimeException("id-" + id);
+
+		return PackApp.get();
+	}
+
+	@RequestMapping(value = EmpRestURIConstants.GET_ALL_PACK_APP, method = RequestMethod.GET)
+	public @ResponseBody List<PackApp> getAllPackApps() {
+		logger.info("Start getAllPackApps.");
+		List<PackApp> results = packAppRepository.findAll();
+		return results;
+	}
+
+	@RequestMapping(value = EmpRestURIConstants.APP_GET_OP_PACK, method = RequestMethod.GET)
 	public @ResponseBody List<PackApp> getAllAppsByOperatorAndPack(@PathVariable("operator") String operator, @PathVariable("pack") String pack) {
 		logger.info("Start getAllApps by operator and pack name.");
 		List<PackApp> results = packAppRepository.findByOperatorAndPack(operator, pack);

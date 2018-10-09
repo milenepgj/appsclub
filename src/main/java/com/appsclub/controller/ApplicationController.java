@@ -22,7 +22,7 @@ public class ApplicationController {
 	ApplicationRepository appRepository;
 
 	@RequestMapping(value = EmpRestURIConstants.GET_APP, method = RequestMethod.GET)
-	public @ResponseBody Application getApplication(@PathVariable("id") Integer id) {
+	public @ResponseBody Application getApplication(@PathVariable("id") int id) {
 		logger.info("Start getApplication. ID="+id);
 
 		Optional<Application> application = appRepository.findById(id);
