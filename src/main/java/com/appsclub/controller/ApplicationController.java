@@ -21,7 +21,7 @@ public class ApplicationController {
 	@Autowired
 	ApplicationRepository appRepository;
 
-	@RequestMapping(value = EmpRestURIConstants.GET_APP, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_APP, method = RequestMethod.GET)
 	public @ResponseBody Application getApplication(@PathVariable("id") int id) {
 		logger.info("Start getApplication. ID="+id);
 
@@ -33,7 +33,7 @@ public class ApplicationController {
 		return application.get();
 	}
 	
-	@RequestMapping(value = EmpRestURIConstants.GET_ALL_APP, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_ALL_APP, method = RequestMethod.GET)
 	public @ResponseBody List<Application> getAllApplications() {
 		logger.info("Start getAllApplications.");
 		List<Application> results = appRepository.findAll();

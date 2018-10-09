@@ -1,8 +1,5 @@
 package com.appsclub.repository;
 
-import com.appsclub.model.Application;
-import com.appsclub.model.Employee;
-import com.appsclub.model.Operator;
 import com.appsclub.model.PackApp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

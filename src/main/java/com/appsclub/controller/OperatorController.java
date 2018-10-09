@@ -25,7 +25,7 @@ public class OperatorController {
 	@Autowired
 	OperatorRepository operatorRepository;
 
-	@RequestMapping(value = EmpRestURIConstants.GET_OP, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_OP, method = RequestMethod.GET)
 	public @ResponseBody Operator getOperator(@PathVariable("id") Integer id) {
 		logger.info("Start getOperator. ID="+id);
 
@@ -37,7 +37,7 @@ public class OperatorController {
 		return Operator.get();
 	}
 	
-	@RequestMapping(value = EmpRestURIConstants.GET_ALL_OP, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_ALL_OP, method = RequestMethod.GET)
 	public @ResponseBody List<Operator> getAllOperators() {
 		logger.info("Start getAllOperators.");
 		List<Operator> results = operatorRepository.findAll();

@@ -25,7 +25,7 @@ public class ApplicationPacksController {
 	@Autowired
 	PackAppRepository packAppRepository;
 
-	@RequestMapping(value = EmpRestURIConstants.GET_PACK_APP_ID, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_PACK_APP_ID, method = RequestMethod.GET)
 	public @ResponseBody PackApp getPackApp(@PathVariable("id") Integer id) {
 		logger.info("Start getPackApp. ID="+id);
 
@@ -37,14 +37,14 @@ public class ApplicationPacksController {
 		return PackApp.get();
 	}
 
-	@RequestMapping(value = EmpRestURIConstants.GET_ALL_PACK_APP, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_ALL_PACK_APP, method = RequestMethod.GET)
 	public @ResponseBody List<PackApp> getAllPackApps() {
 		logger.info("Start getAllPackApps.");
 		List<PackApp> results = packAppRepository.findAll();
 		return results;
 	}
 
-	@RequestMapping(value = EmpRestURIConstants.APP_GET_OP_PACK, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.APP_GET_OP_PACK, method = RequestMethod.GET)
 	public @ResponseBody List<PackApp> getAllAppsByOperatorAndPack(@PathVariable("operator") String operator, @PathVariable("pack") String pack) {
 		logger.info("Start getAllApps by operator and pack name.");
 		List<PackApp> results = packAppRepository.findByOperatorAndPack(operator, pack);

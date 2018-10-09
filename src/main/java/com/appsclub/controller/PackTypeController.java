@@ -25,7 +25,7 @@ public class PackTypeController {
 	@Autowired
 	PackTypeRepository packTypeRepository;
 
-	@RequestMapping(value = EmpRestURIConstants.GET_PACK_TYPE_APP_ID, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_PACK_TYPE_APP_ID, method = RequestMethod.GET)
 	public @ResponseBody PackType getPackType(@PathVariable("id") Integer id) {
 		logger.info("Start getPackType. ID="+id);
 
@@ -37,7 +37,7 @@ public class PackTypeController {
 		return PackType.get();
 	}
 	
-	@RequestMapping(value = EmpRestURIConstants.GET_ALL_PACK_TYPE_APP, method = RequestMethod.GET)
+	@RequestMapping(value = RestURIConstants.GET_ALL_PACK_TYPE_APP, method = RequestMethod.GET)
 	public @ResponseBody List<PackType> getAllPackTypes() {
 		logger.info("Start getAllPackTypes.");
 		List<PackType> results = packTypeRepository.findAll();

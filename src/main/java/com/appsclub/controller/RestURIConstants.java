@@ -1,6 +1,6 @@
 package com.appsclub.controller;
 
-public class EmpRestURIConstants {
+public class RestURIConstants {
 
 	public static final String GET_APP = "/rest/apps/{id}";
 	public static final String GET_ALL_APP = "/rest/apps";
