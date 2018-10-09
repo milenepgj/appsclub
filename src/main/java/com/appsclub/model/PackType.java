@@ -72,12 +72,12 @@ public class PackType  implements Serializable {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
-
+/*
     public List<PackApp> getApps() {
         return apps;
     }
 
     public void setApps(List<PackApp> apps) {
         this.apps = apps;
-    }
+    }*/
 }

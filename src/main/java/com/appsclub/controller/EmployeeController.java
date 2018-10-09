@@ -47,9 +47,15 @@ public class EmployeeController {
 
 		return employee.get();
 		
-		//return empData.get(empId);
 	}
-	
+
+	@RequestMapping(value = EmpRestURIConstants.GET_ALL_NAME_ID, method = RequestMethod.GET)
+	public @ResponseBody List<Employee> getAllEmployeesNameId(@PathVariable("id") int empId, @PathVariable("name") String name) {
+		logger.info("Start getAllEmployees.");
+		List<Employee> emps = employeeRepository.findByNameAndId(name, empId);
+		return emps;
+	}
+
 	@RequestMapping(value = EmpRestURIConstants.GET_ALL_EMP, method = RequestMethod.GET)
 	public @ResponseBody List<Employee> getAllEmployees() {
 		logger.info("Start getAllEmployees.");

@@ -5,6 +5,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name="Operator")
 @Table(name = "operator")
@@ -22,6 +24,13 @@ public class Operator implements Serializable {
 
     @Column(nullable = false, updatable = false)
     private String country;
+
+    @OneToMany(
+            mappedBy = "operator",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<PackApp> packs = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -46,4 +55,12 @@ public class Operator implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
+/*
+    public List<PackApp> getPacks() {
+        return packs;
+    }
+
+    public void setPacks(List<PackApp> packs) {
+        this.packs = packs;
+    }*/
 }

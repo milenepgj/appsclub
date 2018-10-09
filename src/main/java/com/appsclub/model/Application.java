@@ -34,6 +34,9 @@ public class Application  implements Serializable {
     @CreatedDate
     private Date createdDate;
 
+    @Column(nullable = false, updatable = false)
+    private String url;
+
     @OneToMany(
             mappedBy = "app",
             cascade = CascadeType.ALL,
@@ -83,12 +86,20 @@ public class Application  implements Serializable {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
-
+/*
     public List<PackApp> getPacks() {
         return packs;
     }
 
     public void setPacks(List<PackApp> packs) {
         this.packs = packs;
+    }*/
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

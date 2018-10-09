@@ -12,6 +12,8 @@ public class PackAppId implements Serializable {
     private int appId;
     @Column(name = "pack_id")
     private int packId;
+    @Column(name = "operator_id")
+    private int opId;
 
     @Override
     public boolean equals(Object o) {
@@ -22,12 +24,13 @@ public class PackAppId implements Serializable {
 
         PackAppId that = (PackAppId) o;
         return Objects.equals(appId, that.appId) &&
-                Objects.equals(packId, that.packId);
+                Objects.equals(packId, that.packId) &&
+                Objects.equals(opId, that.opId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(appId, packId);
+        return Objects.hash(appId, packId, opId);
     }
 
 }
