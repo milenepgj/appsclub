@@ -1,7 +1,7 @@
 package com.appsclub.controller;
 
 import com.appsclub.model.PackApp;
-import com.appsclub.repository.AppPackRepository;
+import com.appsclub.repository.PackAppRepository;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +22,12 @@ public class ApplicationPacksController {
 	private static final Logger logger = LoggerFactory.getLogger(ApplicationPacksController.class);
 
 	@Autowired
-	AppPackRepository appPackRepository;
+	PackAppRepository packAppRepository;
 
 	@RequestMapping(value = EmpRestURIConstants.APPPACK_GET_OP_PACK, method = RequestMethod.GET)
 	public @ResponseBody List<PackApp> getAllAppsByOperatorAndPack(@PathVariable("operator") String operator, @PathVariable("pack") String pack) {
 		logger.info("Start getAllApps by operator and pack name.");
-		List<PackApp> results = appPackRepository.findByOperatorAndPack(operator, pack);
+		List<PackApp> results = packAppRepository.findByOperatorAndPack(operator, pack);
 		return results;
 	}
 	

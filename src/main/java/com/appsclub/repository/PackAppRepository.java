@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AppPackRepository extends JpaRepository<Employee, Integer> {
+public interface PackAppRepository extends JpaRepository<PackApp, Integer> {
 
     @Query("SELECT pa FROM Operator p, PackApp pa, Application a, PackType pt " +
             "WHERE p.name = :operator " +
