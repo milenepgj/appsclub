@@ -2,10 +2,12 @@ package com.appsclub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
+@ComponentScan(basePackages = "com.appsclub")
 public class AppsClubServiceApplication {
 
 	public static void main(String[] args) {

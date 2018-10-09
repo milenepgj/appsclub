@@ -53,11 +53,7 @@ public class EmployeeController {
 	@RequestMapping(value = EmpRestURIConstants.GET_ALL_EMP, method = RequestMethod.GET)
 	public @ResponseBody List<Employee> getAllEmployees() {
 		logger.info("Start getAllEmployees.");
-		List<Employee> emps = new ArrayList<Employee>();
-		Set<Integer> empIdKeys = empData.keySet();
-		for(Integer i : empIdKeys){
-			emps.add(empData.get(i));
-		}
+		List<Employee> emps = employeeRepository.findAll();
 		return emps;
 	}
 	

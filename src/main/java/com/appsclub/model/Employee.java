@@ -12,7 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employee", schema = "appsclub")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdDate"},
 		allowGetters = true)
@@ -22,14 +22,14 @@ public class Employee implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
 
-	@Column(nullable = false, updatable = true)
+	@Column(nullable = false, updatable = true, name="name")
 	private String name;
 
-	@Column(nullable = false, updatable = false)
+	@Column(nullable = false, updatable = false, name="created_date")
 	@Temporal(TemporalType.TIMESTAMP)
-
 	@CreatedDate
 	private Date createdDate;
 	
