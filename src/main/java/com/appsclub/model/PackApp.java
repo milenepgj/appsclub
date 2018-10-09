@@ -1,14 +1,11 @@
 package com.appsclub.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "packapp")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class PackApp  implements Serializable {
 
     private static final long serialVersionUID = -5553233819063777926L;

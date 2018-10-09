@@ -14,18 +14,6 @@ import java.util.List;
 @Repository
 public interface AppPackRepository extends JpaRepository<Employee, Integer> {
 
-    //@Query("select name " +
-    //        "from Operator " +
-     //       "where Operator.name = :operatorname and " +
-      //      "Operator.name = :packname"
-            //" and " +
-//            "Operator.id = PackApp.operator.id and " +
-//            "PackApp.packId = PackType.id and " +
-            //"PackType.name = :packname "
-//            "PackApp.appId = Application.id"
-//    )
-    //public List<Operator> findByOperatorAndPack(@Param("operatorname") String operator, @Param("packname") String pack);
-
     @Query("SELECT pa FROM Operator p, PackApp pa, Application a, PackType pt " +
             "WHERE p.name = :operator " +
             "and pa.operator.id = p.id " +

@@ -1,6 +1,5 @@
 package com.appsclub.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -55,12 +54,5 @@ public class Operator implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
-/*
-    public List<PackApp> getPacks() {
-        return packs;
-    }
 
-    public void setPacks(List<PackApp> packs) {
-        this.packs = packs;
-    }*/
 }
