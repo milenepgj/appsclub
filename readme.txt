@@ -12,23 +12,20 @@ Seguem os endpoints disponibilizados nesta versão:
 
 ## Listar aplicativo pelo nome [/rest/apps/name={name}]
 
-## Listar todos os aplicativos pelo nome do pacote e país [/rest/apps/packname={packname}&country={country}]
-        
-## Listar todos os aplicativos [/rest/apps]
-
-## Listar todos pacotes por operadora e nome do pacote [/rest/apppack/operator={operator}&pack={pack}]
-        
-## Listar todos pacotes por país [/rest/apppack/country={country}]
-    
-## Listar operadora por identificador [/rest/operators/name={name}]
-
-## Listar todas as operadoras [/rest/operators]
-
-## Listar pacote por identificador [/rest/packtype/name={name}]
-
-## Listar todos os pacotes [/rest/packtype]
-
-## Listar todos os pacotes por país e nome do pacote [/rest/packtype/country={country}&packname={packname}]
+### Buscar aplicativo por nome: GET_APP_BY_NAME = "/rest/apps/name={name}"
+### Listar aplicativos por país = "/rest/apps/country={country}"
+### Listar aplicativos pelo nome do pacote e país = "/rest/apps/packname={packname}&country={country}"
+### Listar todos os aplicativos disponíveis = "/rest/apps"
+### Listar todos aplicativos que as operadoras possuem em seus pacotes = "/rest/operatorapppacks"
+### Listar os aplicativos que as operadoras possuem em seus pacotes por nome da operadora e nome do pacote = "/rest/operatorapppacks/operator={operator}&pack={pack}"
+### Buscar operadora por nome = "/rest/operators/name={name}"
+### Listar todas as operadoras cadastradas = "/rest/operators"
+### Buscar pacotes por nome = "/rest/packtype/name={name}"
+### Listar todos os pacotes cadastrados = "/rest/packtype"
+### Listar todos os pacotes por país e nome do pacote = "/rest/packtype/country={country}&packname={packname}"
+### Listar todos os aplicativos relacionados a um pacote pelo seu nome = "/rest/packapp/name={name}"
+### Listar todos os aplicativos relacionados a um pacote pelo país = "/rest/packapp/country={country}"
+### Listar todos os pacotes que possuem aplicativos associados = "/rest/packapp"
 
 ##### Dados de conexão e para exemplo
 
@@ -38,32 +35,32 @@ login: appcl2b/app16m1lla
 
 - Segue DDL para criação do esquema:
 
-CREATE DATABASE appsclub;
+CREATE DATABASE appsclub
 
 - Segue usuário gerado para acesso à base de dados e instrução de grant:
 
-CREATE USER 'appmilla'@'localhost' IDENTIFIED BY 'appmilla81';
-GRANT ALL PRIVILEGES ON *.* TO 'appmilla'@'localhost' WITH GRANT OPTION;
+CREATE USER 'appmilla'@'localhost' IDENTIFIED BY 'appmilla81'
+GRANT ALL PRIVILEGES ON *.* TO 'appmilla'@'localhost' WITH GRANT OPTION
 
 - Segue um exemplo enxuto de DML para uma consulta inicial:
 
-insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Duolingo', 'https://pt.duolingo.com/');
-insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Keep Yoga', 'https://play.google.com/store/apps/details?id=com.gotokeep.yoga.intl');
-insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Bubble Shooter', 'https://play.google.com/store/apps/details?id=com.linkdesks.bubblegames.bubbleshooter');
-insert into application (country, created_date, name, url) values ('EUA', CURDATE(), 'Peppa Pig: Paintbox', 'https://play.google.com/store/apps/details?id=air.com.peppapig.paintbox');
-insert into packtype (created_date, name) values (CURDATE(), 'app');
-insert into packtype (created_date, name) values (CURDATE(), 'games');
-insert into packtype (created_date, name) values (CURDATE(), 'kids');
-insert into operator (country, name) values ('Brasil', 'Vivo');
-insert into operator (country, name) values ('Brasil', 'Tim');
-insert into packapp (app_id, pack_id) values (1,1);
-insert into packapp (app_id, pack_id) values (2,1);
-insert into packapp (app_id, pack_id) values (3,2);
-insert into packapp (app_id, pack_id) values (4,3);
-insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (1,1,1);
-insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (2,1,1);
-insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (3,2,2);
-insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (4,3,2);
+insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Duolingo', 'https://pt.duolingo.com/')
+insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Keep Yoga', 'https://play.google.com/store/apps/details?id=com.gotokeep.yoga.intl')
+insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Bubble Shooter', 'https://play.google.com/store/apps/details?id=com.linkdesks.bubblegames.bubbleshooter')
+insert into application (country, created_date, name, url) values ('EUA', CURDATE(), 'Peppa Pig: Paintbox', 'https://play.google.com/store/apps/details?id=air.com.peppapig.paintbox')
+insert into packtype (created_date, name) values (CURDATE(), 'app')
+insert into packtype (created_date, name) values (CURDATE(), 'games')
+insert into packtype (created_date, name) values (CURDATE(), 'kids')
+insert into operator (country, name) values ('Brasil', 'Vivo')
+insert into operator (country, name) values ('Brasil', 'Tim')
+insert into packapp (app_id, pack_id) values (1,1)
+insert into packapp (app_id, pack_id) values (2,1)
+insert into packapp (app_id, pack_id) values (3,2)
+insert into packapp (app_id, pack_id) values (4,3)
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (1,1,1)
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (2,1,1)
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (3,2,2)
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (4,3,2)
 
 
 ##### Algumas considerações:
