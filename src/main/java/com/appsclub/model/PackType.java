@@ -36,12 +36,12 @@ public class PackType  implements Serializable {
     @CreatedDate
     private Date createdDate;
 
-    @OneToMany(
+/*    @OneToMany(
             mappedBy = "pack",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<OperatorPackApp> apps = new ArrayList<>();
+    private List<OperatorPackApp> apps = new ArrayList<>();*/
     public PackType(){
         super();
     }

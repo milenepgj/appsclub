@@ -30,7 +30,11 @@ Seguem os endpoints disponibilizados nesta versão:
 
 ## Listar todos os pacotes por país e nome do pacote [/rest/packtype/country={country}&packname={packname}]
 
-##### Dados para exemplo
+##### Dados de conexão e para exemplo
+
+- Login para autenticação a partir do client:
+
+login: appcl2b/app16m1lla
 
 - Segue DDL para criação do esquema:
 
@@ -43,12 +47,24 @@ GRANT ALL PRIVILEGES ON *.* TO 'appmilla'@'localhost' WITH GRANT OPTION;
 
 - Segue um exemplo enxuto de DML para uma consulta inicial:
 
-insert into appsclub.application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Duolingo', 'http://duolingo.br');
-insert into appsclub.application (country, created_date, name, url) values ('EUA', CURDATE(), 'CopoDagua', 'http://copodagua.br');
-insert into appsclub.packtype (created_date, name) values (CURDATE(), 'app');
-insert into appsclub.operator (country, name) values ('Brasil', 'Vivo');
-insert into appsclub.operatorpackapp (app_id, pack_id, operator_id) values (1,1,1);
-insert into appsclub.operatorpackapp (app_id, pack_id, operator_id) values (2,1,1);
+insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Duolingo', 'https://pt.duolingo.com/');
+insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Keep Yoga', 'https://play.google.com/store/apps/details?id=com.gotokeep.yoga.intl');
+insert into application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Bubble Shooter', 'https://play.google.com/store/apps/details?id=com.linkdesks.bubblegames.bubbleshooter');
+insert into application (country, created_date, name, url) values ('EUA', CURDATE(), 'Peppa Pig: Paintbox', 'https://play.google.com/store/apps/details?id=air.com.peppapig.paintbox');
+insert into packtype (created_date, name) values (CURDATE(), 'app');
+insert into packtype (created_date, name) values (CURDATE(), 'games');
+insert into packtype (created_date, name) values (CURDATE(), 'kids');
+insert into operator (country, name) values ('Brasil', 'Vivo');
+insert into operator (country, name) values ('Brasil', 'Tim');
+insert into packapp (app_id, pack_id) values (1,1);
+insert into packapp (app_id, pack_id) values (2,1);
+insert into packapp (app_id, pack_id) values (3,2);
+insert into packapp (app_id, pack_id) values (4,3);
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (1,1,1);
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (2,1,1);
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (3,2,2);
+insert into operatorpackapp (pack_app_app_id, pack_app_pack_id, operator_id) values (4,3,2);
+
 
 ##### Algumas considerações:
 

@@ -41,19 +41,4 @@ public class OperatorPackAppController {
 		return results;
 	}
 
-
-	@RequestMapping(value = RestURIConstants.APP_GET_BY_COUNTRY, method = RequestMethod.GET)
-	public @ResponseBody List<OperatorPackApp> getAllApplicationsPacksByCountry(@PathVariable("country") String country) {
-		logger.info("Start getAllApplicationsPacksByCountry by country.");
-		List<OperatorPackApp> results = operatorPackAppRepository.findByCountry(country);
-		return results;
-	}
-
-    @RequestMapping(value = RestURIConstants.GET_ALL_PACK_TYPE_BY_COUNTRY_PACKNAME, method = RequestMethod.GET)
-    public @ResponseBody List<OperatorPackApp> getAllPackTypesByCountryPackname(@PathVariable("country") String country,
-                                                                                @PathVariable("packname") String packName) {
-        logger.info("Start getAllPackTypesByCountryPackname where country = " + country + " and packname = " + packName);
-        List<OperatorPackApp> results = operatorPackAppRepository.findByCountryAndPackName(country, packName);
-        return results;
-    }
 }

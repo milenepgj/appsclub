@@ -1,5 +1,7 @@
 package com.appsclub.controller;
 
+import com.appsclub.model.OperatorPackApp;
+import com.appsclub.model.PackApp;
 import com.appsclub.model.PackType;
 import com.appsclub.repository.PackTypeRepository;
 import org.slf4j.Logger;
@@ -42,6 +44,14 @@ public class PackTypeController {
 	public @ResponseBody List<PackType> getAllPackTypes() {
 		logger.info("Start getAllPackTypes.");
 		List<PackType> results = packTypeRepository.findAll();
+		return results;
+	}
+
+	@RequestMapping(value = RestURIConstants.GET_ALL_PACK_TYPE_BY_COUNTRY_PACKNAME, method = RequestMethod.GET)
+	public @ResponseBody List<PackType> getAllPackTypesByCountryPackname(@PathVariable("country") String country,
+																				@PathVariable("packname") String packName) {
+		logger.info("Start getAllPackTypesByCountryPackname where country = " + country + " and packname = " + packName);
+		List<PackType> results = packTypeRepository.findByCountryAndPackName(country, packName);
 		return results;
 	}
 

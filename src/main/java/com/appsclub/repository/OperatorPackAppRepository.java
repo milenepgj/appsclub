@@ -21,24 +21,17 @@ public interface OperatorPackAppRepository extends JpaRepository<OperatorPackApp
     @Query("SELECT pa FROM Operator p, OperatorPackApp pa, Application a, PackType pt " +
             "WHERE p.name = :operator " +
             "and pa.operator.id = p.id " +
-            "and pa.app.id = a.id " +
-            "and pa.pack.id = pt.id " +
+            "and pa.operatorPackAppId.packApp.app.id = a.id " +
+            "and pa.operatorPackAppId.packApp.pack.id = pt.id " +
             "and pt.name = :pack")
     public List<OperatorPackApp> findByOperatorAndPack(@Param("operator") String operator, @Param("pack") String pack);
 
     @Query("SELECT pa FROM Operator p, OperatorPackApp pa, Application a, PackType pt " +
             "WHERE pa.operator.id = p.id " +
-            "and pa.app.id = a.id " +
-            "and pa.pack.id = pt.id " +
+            "and pa.operatorPackAppId.packApp.app.id = a.id " +
+            "and pa.operatorPackAppId.packApp.pack.id = pt.id " +
             "and a.country = :country")
     public List<OperatorPackApp> findByCountry(@Param("country") String country);
 
-    @Query("SELECT pa FROM Operator p, OperatorPackApp pa, Application a, PackType pt " +
-            "WHERE a.country = :country " +
-            "and pa.operator.id = p.id " +
-            "and pa.app.id = a.id " +
-            "and pa.pack.id = pt.id " +
-            "and pt.name = :packname")
-    public List<OperatorPackApp> findByCountryAndPackName(@Param("country") String country, @Param("packname") String packname);
 
 }

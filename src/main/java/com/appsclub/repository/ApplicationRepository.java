@@ -23,8 +23,8 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
     @Query("SELECT a FROM Operator p, OperatorPackApp pa, Application a, PackType pt " +
             "WHERE a.country = :country " +
             "and pa.operator.id = p.id " +
-            "and pa.app.id = a.id " +
-            "and pa.pack.id = pt.id " +
+            "and pa.operatorPackAppId.packApp.app.id = a.id " +
+            "and pa.operatorPackAppId.packApp.pack.id = pt.id " +
             "and pt.name = :packname")
     public List<Application> findByCountryAndPackName(@Param("country") String country, @Param("packname") String packname);
 

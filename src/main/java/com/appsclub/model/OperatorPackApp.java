@@ -20,14 +20,14 @@ public class OperatorPackApp implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("opId")
     private Operator operator;
-
+/*
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("appId")
     private Application app;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("packId")
-    private PackType pack;
+    private PackType pack;*/
 
     public Operator getOperator() {
         return operator;
@@ -38,20 +38,20 @@ public class OperatorPackApp implements Serializable {
     }
 
     public Application getApp() {
-        return app;
+        return operatorPackAppId.getPackApp().getApp();
     }
-
+/*
     public void setApp(Application app) {
-        this.app = app;
-    }
+        this.operatorPackAppId.getPackApp().setApp(app);
+    }*/
 
     public PackType getPack() {
-        return pack;
+        return operatorPackAppId.getPackApp().getPack();
     }
 
-    public void setPack(PackType pack) {
-        this.pack = pack;
-    }
+/*    public void setPack(PackType pack) {
+        this.operatorPackAppId.getPackApp().setPack(pack);
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -61,14 +61,14 @@ public class OperatorPackApp implements Serializable {
             return false;
 
         OperatorPackApp that = (OperatorPackApp) o;
-        return Objects.equals(app, that.app) &&
-                Objects.equals(pack, that.pack) &&
+        return Objects.equals(operatorPackAppId.getPackApp().getApp().getId(), that.operatorPackAppId.getPackApp().getApp().getId()) &&
+                Objects.equals(operatorPackAppId.getPackApp().getPack().getId(), that.operatorPackAppId.getPackApp().getPack().getId()) &&
                 Objects.equals(operator, that.operator);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(app, pack, operator);
+        return Objects.hash(operatorPackAppId.getPackApp().getApp().getId(), operatorPackAppId.getPackApp().getPack().getId(), operator);
     }
 
 }
