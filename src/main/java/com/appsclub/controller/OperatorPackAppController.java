@@ -1,0 +1,59 @@
+package com.appsclub.controller;
+
+import com.appsclub.model.OperatorPackApp;
+import com.appsclub.repository.OperatorPackAppRepository;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+
+/**
+ * Realiza o tratamento do tráfego de requests para acesso a informações de pacotes de aplicativos de uma operadora
+ */
+
+@Controller
+@JsonIgnoreProperties
+public class OperatorPackAppController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(OperatorPackAppController.class);
+
+	@Autowired
+    OperatorPackAppRepository operatorPackAppRepository;
+
+	@RequestMapping(value = RestURIConstants.GET_ALL_PACK_APP, method = RequestMethod.GET)
+	public @ResponseBody List<OperatorPackApp> getAllPackApps() {
+		logger.info("Start getAllPackApps.");
+		List<OperatorPackApp> results = operatorPackAppRepository.findAll();
+		return results;
+	}
+
+	@RequestMapping(value = RestURIConstants.APP_GET_OP_PACK, method = RequestMethod.GET)
+	public @ResponseBody List<OperatorPackApp> getAllAppsByOperatorAndPack(@PathVariable("operator") String operator, @PathVariable("pack") String pack) {
+		logger.info("Start getAllApps by operator and pack name.");
+		List<OperatorPackApp> results = operatorPackAppRepository.findByOperatorAndPack(operator, pack);
+		return results;
+	}
+
+
+	@RequestMapping(value = RestURIConstants.APP_GET_BY_COUNTRY, method = RequestMethod.GET)
+	public @ResponseBody List<OperatorPackApp> getAllApplicationsPacksByCountry(@PathVariable("country") String country) {
+		logger.info("Start getAllApplicationsPacksByCountry by country.");
+		List<OperatorPackApp> results = operatorPackAppRepository.findByCountry(country);
+		return results;
+	}
+
+    @RequestMapping(value = RestURIConstants.GET_ALL_PACK_TYPE_BY_COUNTRY_PACKNAME, method = RequestMethod.GET)
+    public @ResponseBody List<OperatorPackApp> getAllPackTypesByCountryPackname(@PathVariable("country") String country,
+                                                                                @PathVariable("packname") String packName) {
+        logger.info("Start getAllPackTypesByCountryPackname where country = " + country + " and packname = " + packName);
+        List<OperatorPackApp> results = operatorPackAppRepository.findByCountryAndPackName(country, packName);
+        return results;
+    }
+}

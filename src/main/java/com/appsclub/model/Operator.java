@@ -7,6 +7,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Permite realizar a persistência dos dados de operadoras
+ */
+
 @Entity(name="Operator")
 @Table(name = "operator")
 @EntityListeners(AuditingEntityListener.class)
@@ -29,7 +33,7 @@ public class Operator implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<PackApp> packs = new ArrayList<>();
+    private List<OperatorPackApp> packs = new ArrayList<>();
 
     public int getId() {
         return id;

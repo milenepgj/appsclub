@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Permite realizar a persistência dos dados de pacotes
+ */
+
+
 @Entity(name="PackType")
 @Table(name = "packtype")
 @EntityListeners(AuditingEntityListener.class)
@@ -36,7 +41,7 @@ public class PackType  implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<PackApp> apps = new ArrayList<>();
+    private List<OperatorPackApp> apps = new ArrayList<>();
     public PackType(){
         super();
     }

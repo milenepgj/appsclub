@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * Permite especificar o tipo de autenticação escolhidas para o projeto
+ */
+
 @Component
 public class AuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 

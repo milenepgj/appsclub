@@ -15,8 +15,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Handles requests for the PackType service.
+ * Realiza o tratamento do tráfego de requests para acesso a informações de pacotes de aplicativos
  */
+
 @Controller
 public class PackTypeController {
 	
@@ -25,14 +26,14 @@ public class PackTypeController {
 	@Autowired
 	PackTypeRepository packTypeRepository;
 
-	@RequestMapping(value = RestURIConstants.GET_PACK_TYPE_APP_ID, method = RequestMethod.GET)
-	public @ResponseBody PackType getPackType(@PathVariable("id") Integer id) {
-		logger.info("Start getPackType. ID="+id);
+	@RequestMapping(value = RestURIConstants.GET_PACK_TYPE_APP_NAME, method = RequestMethod.GET)
+	public @ResponseBody PackType getPackType(@PathVariable("name") String name) {
+		logger.info("Start getPackType. Name ="+name);
 
-		Optional<PackType> PackType = packTypeRepository.findById(id);
+		Optional<PackType> PackType = packTypeRepository.findByName(name);
 
 		if (!PackType.isPresent())
-			throw new RuntimeException("id-" + id);
+			throw new RuntimeException("name -" + name);
 
 		return PackType.get();
 	}

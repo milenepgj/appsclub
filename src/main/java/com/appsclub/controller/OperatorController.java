@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Handles requests for the Operator service.
+ * Realiza o tratamento do tráfego de requests para acesso a informações de operadoras
  */
 @Controller
 public class OperatorController {
@@ -25,14 +25,14 @@ public class OperatorController {
 	@Autowired
 	OperatorRepository operatorRepository;
 
-	@RequestMapping(value = RestURIConstants.GET_OP, method = RequestMethod.GET)
-	public @ResponseBody Operator getOperator(@PathVariable("id") Integer id) {
-		logger.info("Start getOperator. ID="+id);
+	@RequestMapping(value = RestURIConstants.GET_OP_BY_NAME, method = RequestMethod.GET)
+	public @ResponseBody Operator getOperator(@PathVariable("name") String name) {
+		logger.info("Start getOperator. name="+name);
 
-		Optional<Operator> Operator = operatorRepository.findById(id);
+		Optional<Operator> Operator = operatorRepository.findByName(name);
 
 		if (!Operator.isPresent())
-			throw new RuntimeException("id-" + id);
+			throw new RuntimeException("name-" + name);
 
 		return Operator.get();
 	}

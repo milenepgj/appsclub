@@ -8,9 +8,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
+/**
+ * Permite realizar a persistência dos dados de aplicativos
+ */
 
 @Entity(name="Application")
 @Table(name = "application")
@@ -36,13 +38,6 @@ public class Application  implements Serializable {
 
     @Column(nullable = false, updatable = false)
     private String url;
-
-    @OneToMany(
-            mappedBy = "app",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<PackApp> packs = new ArrayList<>();
 
     public Application(){
         super();

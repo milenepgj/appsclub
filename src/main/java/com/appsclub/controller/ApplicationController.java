@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 /**
- * Handles requests for the Application service.
+ * Realiza o tratamento do tráfego de requests para acesso a informações de aplicativos
  */
 @Controller
 public class ApplicationController {
@@ -21,14 +21,14 @@ public class ApplicationController {
 	@Autowired
 	ApplicationRepository appRepository;
 
-	@RequestMapping(value = RestURIConstants.GET_APP, method = RequestMethod.GET)
-	public @ResponseBody Application getApplication(@PathVariable("id") int id) {
-		logger.info("Start getApplication. ID="+id);
+	@RequestMapping(value = RestURIConstants.GET_APP_BY_NAME, method = RequestMethod.GET)
+	public @ResponseBody Application getApplication(@PathVariable("name") String name) {
+		logger.info("Start getApplication. Name ="+name);
 
-		Optional<Application> application = appRepository.findById(id);
+		Optional<Application> application = appRepository.findByName(name);
 
 		if (!application.isPresent())
-			throw new RuntimeException("id-" + id);
+			throw new RuntimeException("id-" + name);
 
 		return application.get();
 	}
@@ -46,6 +46,13 @@ public class ApplicationController {
 		List<Application> results = appRepository.findByCountry(country);
 		return results;
 	}
+
+    @RequestMapping(value = RestURIConstants.GET_ALL_APP_BY_COUNTRY_PACKNAME, method = RequestMethod.GET)
+    public @ResponseBody List<Application> getAllApplicationsByCountryPack(@PathVariable("packname") String packName, @PathVariable("country") String country) {
+        logger.info("Start getAllApplicationsByCountryPack by country and packname.");
+        List<Application> results = appRepository.findByCountryAndPackName(country, packName);
+        return results;
+    }
 
 	
 }

@@ -4,14 +4,18 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Permite realizar a persistência dos dados de aplicativos dos pacotes que uma operadora pode oferecer
+ */
+
 @Entity
-@Table(name = "packapp")
-public class PackApp  implements Serializable {
+@Table(name = "operatorpackapp")
+public class OperatorPackApp implements Serializable {
 
     private static final long serialVersionUID = -5553233819063777926L;
 
     @EmbeddedId
-    private PackAppId packAppId;
+    private OperatorPackAppId operatorPackAppId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("opId")
@@ -56,7 +60,7 @@ public class PackApp  implements Serializable {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        PackApp that = (PackApp) o;
+        OperatorPackApp that = (OperatorPackApp) o;
         return Objects.equals(app, that.app) &&
                 Objects.equals(pack, that.pack) &&
                 Objects.equals(operator, that.operator);
