@@ -20,14 +20,6 @@ public class OperatorPackApp implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("opId")
     private Operator operator;
-/*
-    @ManyToOne(fetch = FetchType.EAGER)
-    @MapsId("appId")
-    private Application app;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @MapsId("packId")
-    private PackType pack;*/
 
     public Operator getOperator() {
         return operator;
@@ -40,18 +32,10 @@ public class OperatorPackApp implements Serializable {
     public Application getApp() {
         return operatorPackAppId.getPackApp().getApp();
     }
-/*
-    public void setApp(Application app) {
-        this.operatorPackAppId.getPackApp().setApp(app);
-    }*/
 
     public PackType getPack() {
         return operatorPackAppId.getPackApp().getPack();
     }
-
-/*    public void setPack(PackType pack) {
-        this.operatorPackAppId.getPackApp().setPack(pack);
-    }*/
 
     @Override
     public boolean equals(Object o) {

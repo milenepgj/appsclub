@@ -28,13 +28,6 @@ public class Operator implements Serializable {
     @Column(nullable = false, updatable = false)
     private String country;
 
-/*    @OneToMany(
-            mappedBy = "operator",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<OperatorPackApp> packs = new ArrayList<>();*/
-
     public int getId() {
         return id;
     }

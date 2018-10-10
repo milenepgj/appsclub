@@ -11,12 +11,6 @@ import java.util.Objects;
 @Embeddable
 public class OperatorPackAppId implements Serializable {
 
-/*    @Column(name = "app_id")
-    private int appId;
-
-    @Column(name = "pack_id")
-    private int packId;*/
-
     @MapsId
     @OneToOne(fetch = FetchType.LAZY)
     private PackApp packApp;
