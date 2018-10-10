@@ -25,4 +25,12 @@ public interface PackAppRepository extends JpaRepository<PackApp, Integer> {
             "and pa.pack.id = pt.id " +
             "and a.country = :country")
     public List<PackApp> findByCountry(@Param("country") String country);
+
+    @Query("SELECT pa FROM Operator p, PackApp pa, Application a, PackType pt " +
+            "WHERE a.country = :country " +
+            "and pa.operator.id = p.id " +
+            "and pa.app.id = a.id " +
+            "and pa.pack.id = pt.id " +
+            "and pt.name = :packname")
+    public List<PackApp> findByCountryAndPackName(@Param("country") String country, @Param("packname") String packname);
 }

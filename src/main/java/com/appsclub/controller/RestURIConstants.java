@@ -14,7 +14,8 @@ public class RestURIConstants {
 	public static final String GET_PACK_APP_ID = "/rest/packs/{id}";
 	public static final String GET_ALL_PACK_APP = "/rest/packs";
 
-	public static final String GET_PACK_TYPE_APP_ID = "/rest/packtype/{id}";
+	public static final String GET_PACK_TYPE_APP_ID = "/rest/packtype/id={id}";
 	public static final String GET_ALL_PACK_TYPE_APP = "/rest/packtype";
+	public static final String GET_ALL_PACK_TYPE_BY_COUNTRY_PACKNAME = "/rest/packtype/country={country}&packname={packname}";
 
 }

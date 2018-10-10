@@ -43,5 +43,5 @@ public class PackTypeController {
 		List<PackType> results = packTypeRepository.findAll();
 		return results;
 	}
-	
+
 }

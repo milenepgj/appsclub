@@ -2,6 +2,7 @@ package com.appsclub.controller;
 
 import com.appsclub.model.Application;
 import com.appsclub.model.PackApp;
+import com.appsclub.model.PackType;
 import com.appsclub.repository.PackAppRepository;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.slf4j.Logger;
@@ -59,5 +60,12 @@ public class ApplicationPacksController {
 		List<PackApp> results = packAppRepository.findByCountry(country);
 		return results;
 	}
-	
+
+    @RequestMapping(value = RestURIConstants.GET_ALL_PACK_TYPE_BY_COUNTRY_PACKNAME, method = RequestMethod.GET)
+    public @ResponseBody List<PackApp> getAllPackTypesByCountryPackname(@PathVariable("country") String country,
+                                                                         @PathVariable("packname") String packName) {
+        logger.info("Start getAllPackTypesByCountryPackname where country = " + country + " and packname = " + packName);
+        List<PackApp> results = packAppRepository.findByCountryAndPackName(country, packName);
+        return results;
+    }
 }
