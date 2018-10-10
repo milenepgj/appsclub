@@ -1,4 +1,4 @@
-Apps Club
+Apps Club Service
 
 Um serviço de assinatura, onde o usuário paga um pequeno valor recorrente para utilizar centenas de apps que, se comprados individualmente, custariam milhares e milhares de reais. O assinante paga o valor direto na conta de telefone da operadora, sem precisar de cartão de crédito.
 
@@ -32,7 +32,16 @@ Seguem os endpoints disponibilizados nesta versão:
 
 ##### Dados para exemplo
 
-Segue um exemplo de DML para uma consulta inicial ;)
+- Segue DDL para criação do esquema:
+
+CREATE DATABASE appsclub;
+
+- Segue usuário gerado para acesso à base de dados e instrução de grant:
+
+CREATE USER 'appmilla'@'localhost' IDENTIFIED BY 'appmilla81';
+GRANT ALL PRIVILEGES ON *.* TO 'appmilla'@'localhost' WITH GRANT OPTION;
+
+- Segue um exemplo enxuto de DML para uma consulta inicial:
 
 insert into appsclub.application (country, created_date, name, url) values ('Brasil', CURDATE(), 'Duolingo', 'http://duolingo.br');
 insert into appsclub.application (country, created_date, name, url) values ('EUA', CURDATE(), 'CopoDagua', 'http://copodagua.br');
@@ -41,6 +50,7 @@ insert into appsclub.operator (country, name) values ('Brasil', 'Vivo');
 insert into appsclub.operatorpackapp (app_id, pack_id, operator_id) values (1,1,1);
 insert into appsclub.operatorpackapp (app_id, pack_id, operator_id) values (2,1,1);
 
-##### Algumas considerações
+##### Algumas considerações:
 
-Tentei criar 
+Tentei criar a aplicação de forma ágil, tendo como base a documentação e preocupando com o backend. Incluí vários endpoints de consulta para que possam avaliar a forma que os dados foram persistidos, mas não concentrei esforços em criar endpoints para criação e atualização dos dados.
+Não acredito que seja ainda a melhor forma de criar serviços, poderia ter encapsulado algumas informações ou utilizado Java Reactor, já pensando na grande quantidade de acessos, que de forma assincrona, essa tecnologia poderia suprir alguns gargalos, mas levei em consideração ser um projeto que pode ser melhorado com o tempo ou de acordo com a expectativa de uso.
