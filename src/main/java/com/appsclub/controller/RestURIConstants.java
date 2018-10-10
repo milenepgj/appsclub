@@ -2,9 +2,11 @@ package com.appsclub.controller;
 
 public class RestURIConstants {
 
-	public static final String GET_APP = "/rest/apps/{id}";
+	public static final String GET_APP = "/rest/apps/id={id}";
+	public static final String GET_ALL_APP_BY_COUNTRY = "/rest/apps/country={country}";
 	public static final String GET_ALL_APP = "/rest/apps";
 	public static final String APP_GET_OP_PACK = "/rest/apppack/operator={operator}&pack={pack}";
+	public static final String APP_GET_BY_COUNTRY = "/rest/apppack/country={country}";
 
 	public static final String GET_OP = "/rest/operators/{id}";
 	public static final String GET_ALL_OP = "/rest/operators";

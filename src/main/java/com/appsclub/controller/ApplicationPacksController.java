@@ -1,5 +1,6 @@
 package com.appsclub.controller;
 
+import com.appsclub.model.Application;
 import com.appsclub.model.PackApp;
 import com.appsclub.repository.PackAppRepository;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -48,6 +49,14 @@ public class ApplicationPacksController {
 	public @ResponseBody List<PackApp> getAllAppsByOperatorAndPack(@PathVariable("operator") String operator, @PathVariable("pack") String pack) {
 		logger.info("Start getAllApps by operator and pack name.");
 		List<PackApp> results = packAppRepository.findByOperatorAndPack(operator, pack);
+		return results;
+	}
+
+
+	@RequestMapping(value = RestURIConstants.APP_GET_BY_COUNTRY, method = RequestMethod.GET)
+	public @ResponseBody List<PackApp> getAllApplicationsPacksByCountry(@PathVariable("country") String country) {
+		logger.info("Start getAllApplicationsPacksByCountry by country.");
+		List<PackApp> results = packAppRepository.findByCountry(country);
 		return results;
 	}
 	

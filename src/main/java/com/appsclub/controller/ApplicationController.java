@@ -39,5 +39,13 @@ public class ApplicationController {
 		List<Application> results = appRepository.findAll();
 		return results;
 	}
+
+	@RequestMapping(value = RestURIConstants.GET_ALL_APP_BY_COUNTRY, method = RequestMethod.GET)
+	public @ResponseBody List<Application> getAllApplicationsByCountry(@PathVariable("country") String country) {
+		logger.info("Start getAllApplicationsByCountry by country.");
+		List<Application> results = appRepository.findByCountry(country);
+		return results;
+	}
+
 	
 }
